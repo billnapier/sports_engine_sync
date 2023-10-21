@@ -203,28 +203,9 @@ def main():
 
         desc = event.get('DESCRIPTION')
         if desc.startswith('Practice'):
-            data = create_event_dict(team_id=config['teamid'], start_time=start.dt, end_time=end.dt, title=summary)
+            data = create_event_dict(team_id=config['teamid'], start_time=start.dt, end_time=end.dt, title='(Practice) ' + summary)
         else:
-            m = _ICAL_DESC_RE.match(summary)
-            away_team = m.group(1)
-            home_team = m.group(2)
-            if away_team == config.get('icalteamname'):
-                is_home_game = False
-                opponent_name = home_team
-            else:
-                is_home_game = True
-                opponent_name = away_team
-
-            opponent_name = opponent_name[:-4]
-
-            o = _find_first_opponent(session=session, team_id=config['teamid'], opponent_name=opponent_name)
-            if not o:
-                o = create_new_opponent(session=session, team_id=config['teamid'], opponent_name=opponent_name).get('result')
-
-            opponent_id = o.get('id')
-            opponent_name = o.get('name')                
-            data = create_game_dict(team_id=config['teamid'], team_name=config['teamname'],
-                            opponent_id=opponent_id, opponent_name=opponent_name, is_home_game=True, start_time=start.dt)
+            data = create_event_dict(team_id=config['teamid'], start_time=start.dt, end_time=end.dt, title='(Game) ' + summary)
         add_event(session=session, team_id=config['teamid'], data=data)
             
 
