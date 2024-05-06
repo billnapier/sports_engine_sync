@@ -3,7 +3,7 @@ configobj==5.0.8
 html5lib==1.1
 icalendar==5.0.12
 requests==2.31.0
-ruff==0.4.1
+ruff==0.4.3
 six==1.16.0
 typing_extensions==4.11.0
 urllib3==2.2.1
