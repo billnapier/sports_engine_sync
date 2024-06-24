@@ -1,7 +1,7 @@
 absl-py==2.1.0
 configobj==5.0.8
 html5lib==1.1
-icalendar==5.0.12
+icalendar==5.0.13
 requests==2.32.3
 ruff==0.4.9
 six==1.16.0
